@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
+  <html>
+    <head>
+      <style>
+        body
+        {
+          background-image: url({{url_for('static',filename='prev_comp.jpg')}})
+        }
+      </style>
+    </head>
+    <style>
+      h1
+      {
+      color:greenyellow;
+      }
+    </style>
+    </style>
+  </head>
+  <style>
+    h2
+    {
+    color:greenyellow;
+    }
+  </style>
+  </style>
+</head>
+<style>
+  h3
+  {
+  color: greenyellow;
+  }
+</style>
+</style>
+</head>
+<style>
+  h4
+  {
+  color: greenyellow;
+  }
+</style>
+</style>
+</head>
+<style>
+  h5
+  {
+  color:greenyellow;
+  }
+</style>
+  </html>
+  <html>
+<body>
+
+<audio controls autoplay muted>
+  <source src="static\music_pop_6-28744.mp3" type="audio/mp3">
+</audio>
+
+</body>
+</html>
+  <h1 align="center">Chatbot</h1>
+  <h2 align="center">Hello</h2>
+  <h3 align="center">How are you today?</h3>
+  <h4 align="center">Welcome! on our homepage</h4>
+  <h5 align="center">Here,below on the Chatbot section type how is your mood today, based on your answer we will try to recommend you one of the best movie.</h5>
+  <ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+      {{ note.data }}
+      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li><br>
+    <h3>{{ note.sentiment }}</h3><br>
+    <a href={{ note.recommendation }}> Movie link</a>
+    {% endfor %}
+  </ul>
+  <form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    <div align="center">
+      <button type="submit" class="btn btn-primary">Enter</button>
+    </div>
+  </form>
+  {% endblock %}
